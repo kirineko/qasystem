@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:each="problem:${message}">
+    <span th:text="${problem.getId()}">
+    </span>
+    <a th:href="'/youranswer/' + ${problem.getId()}" th:text="${problem.getQuestion()}"></a>
+
+    <div th:if="${problem.getAnswer() != null}">
+        <br>
+        解答如下:
+        <br>
+        <span th:text="${problem.getAnswer()}"></span>
+    </div>
+</div>
+
+<hr>
+
+<form action="/process" method="post">
+    提问:
+    <textarea name="ask" rows="5" cols="50"></textarea>
+    <p>
+        <input type="submit" value="提交">
+    </p>
+</form>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Answer</title>
+</head>
+<body>
+    <span th:text="${problem.getQuestion()}"></span>
+
+    <div th:if="${problem.getAnswer() != null}">
+        <span th:text="${problem.getAnswer()}"></span>
+    </div>
+    <hr>
+    <form th:action="'/processanswer/' + ${problem.getId()}" method="post">
+        回答:
+        <textarea name="myans" rows="5" cols="50">
+        </textarea>
+        <input type="submit" value="提交">
+    </form>
+</body>
+</html>
